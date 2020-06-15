@@ -2,10 +2,10 @@ const { validationResult } = require('express-validator');
 const admin = require('../configs/firebaseService');
 
 exports.createUser = async (req, res) => {
-    const validations = validationResult(req);
+    const errors = validationResult(req).array({ onlyFirstError: true });
 
-    if(validations.errors.length) {
-        return res.status(422).send({ status: false, msg: 'Validation errors.', result: validations.errors })
+    if(errors.length) {
+        return res.status(422).send({ status: false, msg: 'Validation errors.', result: errors })
     }
 
     const { email, password, firstName, lastName, phoneNumber } = req.body;

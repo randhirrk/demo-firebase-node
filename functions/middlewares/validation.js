@@ -11,8 +11,8 @@ exports.signupValidation =  [
 	check('lastName').trim().not().isEmpty().withMessage('Last name is required.'),
 	check('phoneNumber')
 		.trim().not().isEmpty().withMessage('Phone number is required.')
-		.isLength({ min: 8 }).withMessage('The phone number must be 8 chars long and contain a number')
-		.matches(/\d/).withMessage('The phone number must be 8 chars long and contain a number')
+		.matches(/\d/).withMessage('The phone number must be a number.')
+		.isLength({ min: 8 }).withMessage('The phone number must be 8 chars long.')
 ];
 
 exports.emailValidation = [
